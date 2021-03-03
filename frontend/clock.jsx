@@ -32,7 +32,13 @@ export default function Clock(){
         setTime(new Date()); 
     } 
 
-
+    function addZero(number){
+        if(number.toString().length < 2){
+            return '0' + number.toString(); 
+        } else{
+            return number;
+        }
+    }
 
     useEffect(() => {
         setInterval(tick, 1000); 
@@ -48,7 +54,7 @@ export default function Clock(){
                         Time: 
                     </div>
                     <div className='col-2'>
-                        {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}
+                        {addZero(time.getHours())}:{addZero(time.getMinutes())}:{addZero(time.getSeconds())}
                     </div>
                 </div>
                 <div className='row-2'>
@@ -56,7 +62,7 @@ export default function Clock(){
                         Date:
                     </div>
                     <div className='col-2'>
-                        {days[time.getDay()]} {months[time.getMonth()]} {time.getDate()} {time.getFullYear()}
+                        {days[time.getDay()]} {months[time.getMonth()]} {addZero(time.getDate())} {addZero(time.getFullYear())}
                     </div>
                 </div>
             </div>
